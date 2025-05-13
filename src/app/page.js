@@ -1,6 +1,7 @@
 "use client"
 
 import Dashboard from '@/components/Dashboard';
+import './style.css'
 
 export default function Home() {
   return (

@@ -28,7 +28,7 @@ body {
 .card {
   background-color: var(--card-bg);
   border-radius: var(--border-radius);
-  padding: 1.5rem;
+  padding: 2rem;
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
 }
 
