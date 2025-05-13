@@ -1,42 +1,198 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  --bg-color: #0e0e0e;
+  --card-bg: #1a1a1a;
+  --text-color: #ffffff;
+  --accent-green: #00ffae;
+  --accent-red: #ff4d4d;
+  --accent-orange: #ffaa00;
+  --accent-yellow: #f4d35e;
+  --accent-blue: #5bc0eb;
+  --border-radius: 12px;
+  --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  font-family: var(--font);
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cards per row by default */
+  gap: 1.5rem;
+  padding: 2rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.metric {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.chart-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.chart-bar .label {
+  width: 80px;
+  font-size: 0.875rem;
+  margin-right: 0.5rem;
+}
+
+.chart-bar .bar {
+  flex: 1;
+  height: 16px;
+  border-radius: 8px;
+}
+
+.bar.green {
+  background-color: var(--accent-green);
+}
+
+.bar.yellow {
+  background-color: var(--accent-yellow);
+}
+
+.bar.orange {
+  background-color: var(--accent-orange);
+}
+
+.bar.red {
+  background-color: var(--accent-red);
+}
+
+.bar.bg-blue {
+  background-color: var(--accent-blue);
+}
+
+.people-chart-container {
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
+}
+
+.people-chart-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.metrics {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.metric {
+  text-align: center;
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.percent {
+  font-size: 1rem;
+  color: #00ffae; /* Green for percentage */
+}
+
+.chart-container {
+  margin-top: 1.5rem;
+}
+
+/* Time Chart */
+.time-spent-chart {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.time-metric {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.time-bar-chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;  /* Align bars at the bottom */
+  gap: 20px;
+  height: 350px; /* Adjust the chart height if needed */
+}
+
+.time-chart-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px; /* Adjust the width of bars */
+}
+
+.time-bar-container {
+  background-color: #e0e0e0; /* Grey background for the bar container */
+  width: 100%;
+  height: 100%; /* The container height will be the total height of the chart */
+  position: relative;
+}
+
+.time-bar {
+  background-color: #6c6f8d; /* Green color for bars */
+  width: 100%;
+  /* height: 20px; */
+  position: absolute;
+  bottom: 0; /* Make the bars grow from the bottom */
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.time-label {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+   .dashboard-container {
+    grid-template-columns: 1fr; /* 1 card per row on smaller screens */
+  }
+  .metrics {
+    flex-direction: column;
+    align-items: center;
   }
 }
